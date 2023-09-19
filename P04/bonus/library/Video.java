@@ -1,5 +1,8 @@
 package library;
 
+/**
+ * The Video class represents a video publication that can be checked out from the library.
+ */
 
 public class Video extends Publication {
     private int runtime; // Add an instance variable to store the runtime
