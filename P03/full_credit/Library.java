@@ -40,5 +40,12 @@ public class Library {
 
         return stringBuilder.toString();
     }
+
+    public void addPatron(String string) {
+    }
+
+    public Object getPatrons() {
+        return null;
+    }
 }
 
