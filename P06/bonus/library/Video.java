@@ -1,4 +1,3 @@
-
 package library;
 
 import java.io.BufferedReader;
@@ -58,15 +57,6 @@ public class Video extends Publication {
     }
 
     /**
-     * Gets the runtime of the video as a Duration object.
-     *
-     * @return The runtime of the video.
-     */
-    public Duration getRuntime() {
-        return runtime;
-    }
-
-    /**
      * Custom exception class for handling invalid runtime values.
      */
     public static class InvalidRuntimeException extends ArithmeticException {
@@ -95,4 +85,5 @@ public class Video extends Publication {
         return null;
     }
 }
+
 
