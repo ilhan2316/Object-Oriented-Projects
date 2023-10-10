@@ -101,12 +101,6 @@ public class Publication {
     public static Publication load(BufferedReader reader) {
         return null;
     }
-
-    public void setCopyright(int year) {
-    }
-
-    public int getCopyright() {
-        return 0;
-    }
 }
+
 
