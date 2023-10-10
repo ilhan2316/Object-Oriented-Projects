@@ -26,9 +26,6 @@ public class Patron {
         checkedOutPublications.remove(publication);
     }
 
-    public List<Publication> getCheckedOutPublications() {
-        return checkedOutPublications;
-    }
 
     public void save(BufferedWriter bw) throws IOException {
         bw.write(name + '\n');
