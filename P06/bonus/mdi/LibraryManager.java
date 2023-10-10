@@ -114,7 +114,7 @@ public class LibraryManager {
     }
 
     public static void listPublications(Library library) {
-        List<Publication> publications = library.getPublications();
+        List<Publication> publications = library.clearPublications();
         if (publications.isEmpty()) {
             System.out.println("No publications available.");
         } else {
@@ -124,6 +124,7 @@ public class LibraryManager {
             }
         }
     }
+
 
     public static void addPublication(Scanner scanner, Library library) {
         System.out.print("Enter the title: ");
@@ -161,7 +162,7 @@ public class LibraryManager {
         int publicationIndex = scanner.nextInt();
         scanner.nextLine();
 
-        List<Publication> publications = library.getPublications();
+        List<Publication> publications = library.clearPublications();
         if (isValidPublicationIndex(publicationIndex, publications)) {
             System.out.print("Enter the patron's name: ");
             String patronName = scanner.nextLine();
@@ -179,7 +180,7 @@ public class LibraryManager {
         int publicationIndex = scanner.nextInt();
         scanner.nextLine();
 
-        List<Publication> publications = library.getPublications();
+        List<Publication> publications = library.clearPublications();
         if (isValidPublicationIndex(publicationIndex, publications)) {
             library.checkin(publicationIndex);
             System.out.println("Publication checked in successfully!");
@@ -189,7 +190,7 @@ public class LibraryManager {
     }
 
     public static void listPatrons(Library library) {
-        List<String> patrons = library.getPatrons();
+        List<String> patrons = library.clearPatrons();
         if (patrons.isEmpty()) {
             System.out.println("No patrons available.");
         } else {
@@ -222,7 +223,7 @@ public class LibraryManager {
     public static void openLibrary(Scanner scanner, Library library) {
         System.out.print("Enter the filename to open the library data: ");
         String filename = scanner.nextLine();
-    
+
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             Library newLibrary = Library.load(reader);
             if (newLibrary != null) {
@@ -235,6 +236,7 @@ public class LibraryManager {
             System.err.println("Error: Could not open the file. " + e.getMessage());
         }
     }
+
      
 
     private static boolean isValidPublicationIndex(int index, List<Publication> publications) {

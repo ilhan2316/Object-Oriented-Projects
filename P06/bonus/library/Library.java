@@ -10,9 +10,9 @@ import java.util.List;
  * The Library class represents a library with publications and patrons.
  */
 public class Library {
-    private String name;
-    private List<Publication> publications;
-    private List<String> patrons;
+    public String name;
+    public List<Publication> publications;
+    public List<String> patrons;
 
     public Library(String name) {
         this.name = name;
@@ -29,15 +29,15 @@ public class Library {
         for (int i = 0; i < numPublications; i++) {
             String publicationType = br.readLine();
             if ("video".equals(publicationType)) {
-                // Read and create a Video object from the stream
+                
                 Video video = new Video(br);
                 publications.add(video);
             } else if ("publication".equals(publicationType)) {
-                // Read and create a Publication object from the stream
+                
                 Publication publication = new Publication(br);
                 publications.add(publication);
             } else {
-                // Handle an unrecognized publication type
+                
                 throw new IOException("Invalid publication type found in the file.");
             }
         }
@@ -51,40 +51,18 @@ public class Library {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Publication> getPublications() {
-        return publications;
-    }
-
-    public void setPublications(List<Publication> publications) {
-        this.publications = publications;
-    }
-
-    public List<String> getPatrons() {
-        return patrons;
-    }
-
-    public void setPatrons(List<String> patrons) {
-        this.patrons = patrons;
-    }
-
     public void addPatron(String newPatron) {
         patrons.add(newPatron);
     }
 
-    public void clearPatrons() {
+    public List<String> clearPatrons() {
         patrons.clear();
+        return patrons;
     }
 
-    public void clearPublications() {
+    public List<Publication> clearPublications() {
         publications.clear();
+        return publications;
     }
 
     public void checkin(int publicationIndex) {
@@ -92,7 +70,7 @@ public class Library {
     }
 
     public void checkout(int publicationIndex, String patronName) {
-        // Implement checkout logic here
+        
     }
 
     public void addPublication(Publication publication) {
@@ -100,38 +78,38 @@ public class Library {
     }
 
     public void copyFrom(Library newLibrary) {
-        name = newLibrary.getName();
+        name = newLibrary.name;
         publications.clear();
-        publications.addAll(newLibrary.getPublications());
+        publications.addAll(newLibrary.publications);
         patrons.clear();
-        patrons.addAll(newLibrary.getPatrons());
+        patrons.addAll(newLibrary.patrons);
     }
 
     public void save(BufferedWriter bw) throws IOException {
-        // Write the library name to the stream
+        
         bw.write(name + '\n');
 
-        // Write the number of publications in the library
+        
         bw.write(publications.size() + "\n");
 
-        // Iterate over the publications and write each one to the stream
+        
         for (Publication publication : publications) {
             if (publication instanceof Video) {
-                // Write "video" to indicate a Video object
+                
                 bw.write("video\n");
             } else {
-                // Write "publication" to indicate a Publication object
+
                 bw.write("publication\n");
             }
 
-            // Write the publication details to the stream
+
             publication.save(bw);
         }
 
-        // Write the number of patrons in the library
+        
         bw.write(patrons.size() + "\n");
 
-        // Write each patron's name to the stream
+        
         for (String patron : patrons) {
             bw.write(patron + '\n');
         }
@@ -147,13 +125,13 @@ public class Library {
             String publicationType = reader.readLine();
             Publication publication;
             if ("video".equals(publicationType)) {
-                // Create and load a Video object from the stream
+                
                 publication = Video.load(reader);
             } else if ("publication".equals(publicationType)) {
-                // Create and load a Publication object from the stream
+                
                 publication = Publication.load(reader);
             } else {
-                // Handle an unrecognized publication type
+               
                 throw new IOException("Invalid publication type found in the file.");
             }
             loadedLibrary.addPublication(publication);
@@ -169,6 +147,7 @@ public class Library {
         return loadedLibrary;
     }
 }
+
 
 
 
