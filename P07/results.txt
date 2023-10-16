@@ -1,0 +1,237 @@
+FULL CREDIT
+===========
+
+QUESTION 1: Why is String[] args changed to a LinkedList in WordSearch.main? (Hint: Examine the WordSearch constructor!)
+- String[] args is converted to a LinkedList in WordSearch.main because the WordSearch 
+  constructor expects a List<String> to handle command-line arguments more flexibly.
+
+
+
+QUESTION 2: How many puzzles did your machine need to solve with 1 thread to run for between 30 and 45 seconds: 
+  - 900 puzzles
+
+
+QUESTION 3: Provide the output of 
+
+    time java WordSearch n 1000 ../puzzle??.txt 
+
+where n is 1 to 16 and 1000 is the number of puzzles specified in Question 2. NOTE: You can run all of these with a single bash command if you like (again, replace 1000 with your number of puzzles from Question 2):
+
+for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+
+Example Timing:
+
+ for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+1000 puzzles
+Thread 0: 0-999
+
+real	0m31.872s
+user	0m32.475s
+sys	0m0.224s
+
+1000 puzzles
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m14.376s
+user	0m29.078s
+sys	0m0.229s
+
+...and so on
+
+
+
+YOUR Timing:
+
+900 puzzles with 1 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.46s user 0.41s system 99% cpu 35.883 total
+
+900 puzzles with 2 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.42s user 0.30s system 101% cpu 36.048 total
+
+900 puzzles with 3 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.11s user 0.40s system 101% cpu 36.099 total
+
+900 puzzles with 4 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.58s user 0.36s system 101% cpu 35.522 total
+
+900 puzzles with 5 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.41s user 0.35s system 101% cpu 35.179 total
+
+900 puzzles with 6 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  34.41s user 0.36s system 101% cpu 34.222 total
+
+900 puzzles with 7 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  34.60s user 0.38s system 99% cpu 35.087 total
+
+900 puzzles with 8 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  34.94s user 0.30s system 101% cpu 34.555 total
+
+900 puzzles with 9 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.09s user 0.32s system 101% cpu 35.839 total
+
+900 puzzles with 10 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.21s user 0.30s system 102% cpu 34.743 total
+
+900 puzzles with 11 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.60s user 0.40s system 27% cpu 2:09.44 total
+
+900 puzzles with 12 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  41.69s user 0.58s system 103% cpu 40.687 total
+
+900 puzzles with 13 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  37.92s user 0.46s system 12% cpu 5:00.89 total
+
+900 puzzles with 14 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  40.23s user 0.75s system 84% cpu 48.439 total
+
+900 puzzles with 15 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  37.74s user 0.62s system 98% cpu 38.917 total
+
+900 puzzles with 16 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.84s user 0.36s system 101% cpu 36.504 total
+
+
+
+
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program even slightly?  Why or why not?
+
+- increasing the number of threads initially improved program performance up to 8 threads, but adding
+  more threads beyond that point led to slower execution times, probably due to resource contention and increased overhead.
+
+
+
+QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
+
+- In my case, the addition of more threads initially led to improved program performance up to 8 threads, 
+as evidenced by a decrease in execution time; however, beyond 8 threads, the "system load" (sys) time increased 
+considerably, indicating higher system-level overhead, resulting in slower program execution. It was not constant reagrdless of number of threads.
+
+
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of WordSearch exactly as you did for the full credit version. Post your timings here.
+
+YOUR Timing:
+
+
+900 puzzles with 1 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.32s user 0.31s system 103% cpu 34.568 total
+
+900 puzzles with 2 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.29s user 0.28s system 103% cpu 34.503 total
+
+900 puzzles with 3 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.94s user 0.33s system 102% cpu 35.508 total
+
+900 puzzles with 4 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  37.15s user 0.38s system 98% cpu 37.960 total
+
+900 puzzles with 5 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.55s user 0.34s system 103% cpu 35.751 total
+
+900 puzzles with 6 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  38.04s user 0.32s system 103% cpu 37.075 total
+
+900 puzzles with 7 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.84s user 0.31s system 103% cpu 34.959 total
+
+900 puzzles with 8 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.66s user 0.29s system 103% cpu 34.779 total
+
+900 puzzles with 9 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.81s user 0.30s system 103% cpu 35.014 total
+
+900 puzzles with 10 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.75s user 0.33s system 102% cpu 35.162 total
+
+900 puzzles with 11 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.32s user 0.30s system 103% cpu 34.496 total
+
+900 puzzles with 12 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  38.07s user 0.33s system 102% cpu 37.466 total
+
+900 puzzles with 13 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.73s user 0.29s system 102% cpu 36.000 total
+
+900 puzzles with 14 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.55s user 0.29s system 102% cpu 34.827 total
+
+900 puzzles with 15 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  35.22s user 0.29s system 103% cpu 34.394 total
+
+900 puzzles with 16 threads
+Thread 0: 0-899
+java WordSearch $i 900 ../puzzle??.txt  36.72s user 0.30s system 102% cpu 36.054 total
+
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+
+- I believe the thread pool version is rougly equivalent because of how the numbers are quite simialr to before the thread pool.
+  The times were also a lot more variable when the thread pool wasn't used.  
+
+
+
+
+
+QUESTION 7: Compare your full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+- I believe that the bonus solution code is more supportable over a long lifetime because the data is much more constant. 
+
+
+
+
+
+
+EXTREME BONUS
+=============
+
+QUESTION 8: Post your final timings here. (The "race" on Antares will determine the actual winner - this just lets me know you're competing!)
+
+
+
+
+
+
+
